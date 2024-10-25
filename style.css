@@ -1,0 +1,136 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;  /* Dark background */
+    color: #ffffff;  /* White text */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.container {
+    position: relative;
+    padding: 50px;
+}
+
+/* Minimal Header and Text */
+.minimal-text {
+    font-size: 2.5rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #6200ea;  /* Simple purple line under text */
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
+    border-bottom: 2px solid #6200ea;  /* Simple purple line under text */
+    padding-bottom: 10px;
+}
+
+
+
+/* Minimal Project Titles */
+.project-title {
+    color: #00ffff;  /* Cyan text */
+    font-size: 1.8rem;
+    margin-top: 15px;
+    transition: color 0.3s ease;  /* Subtle hover effect */
+}
+
+.project-title:hover {
+    color: #6200ea;  /* Change to purple on hover */
+}
+
+/* Footer */
+footer p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+/* Minimal Geometric Shape */
+.minimal-shape {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #00ffff;  /* Simple cyan border */
+    top: 30%;
+    left: 20%;
+    border-radius: 50%;  /* Circle shape */
+    opacity: 0.8;
+    animation: float 4s infinite ease-in-out;  /* Slow floating animation */
+}
+
+/* Animation for the shape */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.mySlides {
+    display: none;
+    width: 90%; /* Change width as needed */
+    height: 475px; /* Set height explicitly */
+    object-fit: cover; /* This ensures the images fit within the space without distorting */
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 975px; /* Change max-width */
+    height: 475px; /* Change height */
+    margin: auto;
+    }
+
+    /* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    margin-top: -22px; /* Offset by half the button height to center */
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+/* Position the "next" button on the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Position the "prev" button on the left */
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/* On hover, add a dark background to the buttons */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@font-face {
+    font-family: 'TT Lakes Neue';
+    src: url('fonts/TTLakesNeue-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.minimal-tex {
+    font-family: 'TT Lakes Neue', sans-serif;
+    font-size: 5rem; /* adjust size as needed */
+    font-weight: 700; /* adjust weight as needed */
+    line-height: 1.2;
+}
+
+
