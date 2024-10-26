@@ -121,7 +121,7 @@ footer p {
 
 @font-face {
     font-family: 'TT Lakes Neue';
-    src: url('fonts/TTLakesNeue-Black.woff2') format('woff2');
+    src: url('TTLakesNeue-Black.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
