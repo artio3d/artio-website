@@ -61,6 +61,7 @@ footer p {
     left: 20%;
     border-radius: 50%;  /* Circle shape */
     opacity: 0.8;
+    z-index: -1; /* Places the shape behind other elements */
     animation: float 4s infinite ease-in-out;  /* Slow floating animation */
 }
 
