@@ -134,4 +134,8 @@ footer p {
     line-height: 1.2;
 }
 
+.video-container {
+    max-width: 975px; /* Match slideshow container width */
+    margin: auto;
+}
 
