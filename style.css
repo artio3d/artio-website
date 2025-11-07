@@ -1,148 +1,211 @@
+/* CSS Variables for easy theme management */
+:root {
+    --bg-color: #1a1a1a;
+    --primary-text-color: #f0f0f0;
+    --secondary-text-color: #a0a0a0;
+    --accent-color: #00f7b5;
+    --card-color: #252525;
+    --border-color: #333;
+}
+
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #0a0a0a;  /* Dark background */
-    color: #ffffff;  /* White text */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
     margin: 0;
-    padding: 0;
+    line-height: 1.7;
     text-align: center;
-    line-height: 1.6;
 }
 
 .container {
-    position: relative;
-    padding: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Minimal Header and Text */
-.minimal-text {
-    font-size: 2.5rem;
-    color: #ffffff;
-    letter-spacing: 2px;
-    border-bottom: 2px solid #6200ea;  /* Simple purple line under text */
-    padding-bottom: 10px;
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 10px;
-    border-bottom: 2px solid #6200ea;  /* Simple purple line under text */
-    padding-bottom: 10px;
+p {
+    color: var(--secondary-text-color);
 }
 
-.subtitl {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 10px;
-    padding-bottom: 10px;
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.1rem;
 }
 
+/* Header */
+.header {
+    padding: 20px 0;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-
-/* Minimal Project Titles */
-.project-title {
-    color: #00ffff;  /* Cyan text */
+.logo {
     font-size: 1.8rem;
-    margin-top: 15px;
-    transition: color 0.3s ease;  /* Subtle hover effect */
+    font-weight: 700;
+    color: var(--primary-text-color);
 }
 
-.project-title:hover {
-    color: #6200ea;  /* Change to purple on hover */
+/* Hero Section */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem 0;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 2rem;
+    min-height: 50px; /* To prevent layout shift while text is typing */
+}
+
+/* Typed.js Cursor */
+.typed-cursor {
+    color: var(--accent-color);
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #111;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 247, 181, 0.2);
+}
+
+/* Sections General Styling */
+section {
+    padding: 100px 0;
+}
+
+section:nth-child(odd) {
+    background-color: var(--card-color);
+}
+
+/* App Preview Section */
+.matterport-embed {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* Features Section */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item ion-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+}
+
+/* Contact Section */
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-color);
+    color: var(--primary-text-color);
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
 }
 
 /* Footer */
-footer p {
-    color: rgba(255, 255, 255, 0.4);
+.footer {
+    padding: 40px 0;
+    background-color: #111;
+    border-top: 1px solid var(--border-color);
+}
+
+.powered-by {
     font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
 }
-
-/* Minimal Geometric Shape */
-.minimal-shape {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border: 2px solid #00ffff;  /* Simple cyan border */
-    top: 30%;
-    left: 20%;
-    border-radius: 50%;  /* Circle shape */
-    opacity: 0.8;
-    z-index: -1; /* Places the shape behind other elements */
-    animation: float 4s infinite ease-in-out;  /* Slow floating animation */
-}
-
-/* Animation for the shape */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.mySlides {
-    display: none;
-    width: 90%; /* Change width as needed */
-    height: 475px; /* Set height explicitly */
-    object-fit: cover; /* This ensures the images fit within the space without distorting */
-}
-
-.slideshow-container {
-    position: relative;
-    max-width: 975px; /* Change max-width */
-    height: 475px; /* Change height */
-    margin: auto;
-    }
-
-    /* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    padding: 16px;
-    margin-top: -22px; /* Offset by half the button height to center */
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    user-select: none;
-}
-
-/* Position the "next" button on the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* Position the "prev" button on the left */
-.prev {
-    left: 0;
-    border-radius: 0 3px 3px 0;
-}
-
-/* On hover, add a dark background to the buttons */
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-@font-face {
-    font-family: 'TT Lakes Neue';
-    src: url('TTLakesNeue-Black.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-.minimal-tex {
-    font-family: 'TT Lakes Neue', sans-serif;
-    font-size: 5rem; /* adjust size as needed */
-    font-weight: 700; /* adjust weight as needed */
-    line-height: 1.2;
-}
-
-.video-container {
-    max-width: 975px; /* Match slideshow container width */
-    margin: auto;
-}
-
