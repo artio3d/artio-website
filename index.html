@@ -6,6 +6,7 @@
     <title>ART.IO - Interactive 3D Experiences</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -16,34 +17,52 @@
     </header>
 
     <main>
+
+        <div class="video-background-container">
+            <video id="scrub-video" muted playsinline preload="auto">
+                <source src="matterport-walkthrough.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div> <!-- Σκουραίνει το βίντεο για να διαβάζεται το κείμενο -->
+        </div>
+
+        <main class="page-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1>ART.IO</h1>
                 <h2><span id="typed-text"></span></h2>
-                <a href="#app-preview" class="btn">Explore the 3D View</a>
+                <a href="#app-preview" class="btn-hero">
+                    <span data-i18n="hero_btn">Experience the Space</span>
+                </a>
             </div>
         </section>
+        
 
         <!-- App Preview / 3D Tour Section -->
         <section id="app-preview" class="app-preview">
             <div class="container">
-                <h2>Experience the Space in 3D</h2>
-                <p class="section-subtitle">
-                    Here's a real example of a 3D interior walkthrough — fully interactive,
-                    directly embedded on your website. This same technology can be
-                    seamlessly integrated into your own website or property listings to elevate
-                    your presentation.
-                </p>
-                <div class="matterport-embed">
-                    <!-- Ο ΔΙΚΟΣ ΣΑΣ ΚΩΔΙΚΑΣ MATTERPORT ΠΑΡΑΜΕΝΕΙ ΕΔΩ -->
-                    <iframe
-                        src="https://my.matterport.com/show/?m=gnCs6bcha8J"
-                        width="100%"
-                        height="600px"
-                        frameborder="0"
-                        allow="fullscreen; vr">
-                    </iframe>
+                <h2 data-aos="fade-up" data-i18n="projects_title">Explore Our Projects</h2>
+                <p class="section-subtitle" data-i18n="projects_subtitle">Select a project to experience the 3D walkthrough.</p>
+
+                <!-- Navigation / Back Button (Hidden by default) -->
+                <div id="back-nav" style="display: none; margin-bottom: 20px;">
+                    <button onclick="renderMainNodes()" class="btn-back" data-i18n="back_btn">← Back to Projects</button>
+                </div>
+
+                <!-- The Interactive Circle Grid -->
+                <div id="nodes-container" class="nodes-scattered">
+                    <!-- JavaScript will inject circles here -->
+                </div>
+
+                <!-- The Emerging Viewer -->
+                <div id="viewer-container" class="viewer-emerge">
+                    <div class="viewer-header">
+                        <h3 id="active-title" data-i18n="select_room">Select a room type</h3>
+                        <button onclick="closeViewer()" class="btn-close">×</button>
+                    </div>
+                    <div class="iframe-wrapper">
+                        <iframe id="tour-iframe" src="" frameborder="0" allow="fullscreen; vr"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -51,55 +70,100 @@
         <!-- QR Code & Features Section -->
         <section id="features" class="features">
             <div class="container">
-                 <h2>Access Anywhere with QR</h2>
-                 <p class="section-subtitle">Your 3D interior can also be shared through a custom QR code.</p>
-                 <div class="features-grid">
-                    <div class="feature-item">
-                        <ion-icon name="scan-outline"></ion-icon>
-                        <h3>Instant Access</h3>
-                        <p>Scan with any smartphone camera — no app required.</p>
+                <h2 data-aos="fade-down" data-i18n="features_title">Why 3D Tours are Non-Negotiable</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-i18n="features_subtitle">Standard photos are no longer enough. To lead the market, you need to provide presence.</p>
+                
+                <!-- Features Section -->
+                <div class="features-grid">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <h3 data-i18n="feat_1_title">Virtual Open House 24/7</h3>
+                        <p data-i18n="feat_1_body">Sell properties 31% faster. Allow potential buyers or guests to explore every corner of your space from anywhere in the world, reducing wasted viewings.</p>
                     </div>
-                    <div class="feature-item">
-                        <ion-icon name="share-social-outline"></ion-icon>
-                        <h3>Multi-Platform</h3>
-                        <p>Perfect for Airbnb, Booking.com, business cards, or brochures.</p>
+
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        <h3 data-i18n="feat_2_title">Boost Booking Confidence</h3>
+                        <p data-i18n="feat_2_body">Eliminate "not as pictured" complaints. Provide an immersive 1:1 preview that builds absolute trust for Airbnb guests and hotel visitors.</p>
                     </div>
-                     <div class="feature-item">
-                        <ion-icon name="color-palette-outline"></ion-icon>
-                        <h3>Custom Branding</h3>
-                        <p>Personalized QR codes that match your brand identity.</p>
+
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                        <ion-icon name="layers-outline"></ion-icon>
+                        <h3 data-i18n="feat_3_title">Millimeter-Level Precision</h3>
+                        <p data-i18n="feat_3_body">Architects and Designers can showcase spatial flow and structural details with the famous "Dollhouse View" — the ultimate digital portfolio.</p>
                     </div>
-                 </div>
-                 <a href="#contact" class="btn">Get Your Custom QR</a>
+                </div>
             </div>
         </section>
+        
+
+        <section id="industries" class="industries">
+            <div class="container">
+                <h2 data-aos="fade-up" data-i18n="industries_title">Industries We Transform</h2>
+                <!-- Industries Section -->
+                <div class="industry-list">
+                    <div class="industry-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box"><ion-icon name="business-outline"></ion-icon></div>
+                        <h4 data-i18n="ind_1_title">Real Estate</h4>
+                        <p data-i18n="ind_1_body">Transform listings into immersive digital open houses. Reduce unnecessary viewings by 40% while attracting high-intent buyers from around the globe.</p>
+                    </div>
+
+                    <div class="industry-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box"><ion-icon name="bed-outline"></ion-icon></div>
+                        <h4 data-i18n="ind_2_title">Hospitality</h4>
+                        <p data-i18n="ind_2_body">Increase direct bookings and eliminate 'not as pictured' uncertainty. Give your guests the confidence of a 5-star digital arrival before they even check in.</p>
+                    </div>
+
+                    <div class="industry-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon-box"><ion-icon name="sparkles-outline"></ion-icon></div>
+                        <h4 data-i18n="ind_3_title">Event Venues</h4>
+                        <p data-i18n="ind_3_body">Enable remote event planning and layout visualization. Convert venue inquiries into bookings faster by showcasing your space's versatility 24/7.</p>
+                    </div>
+
+                    <div class="industry-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box"><ion-icon name="pencil-outline"></ion-icon></div>
+                        <h4 data-i18n="ind_4_title">Architecture</h4>
+                        <p data-i18n="ind_4_body">Document construction progress and showcase finished projects with absolute spatial accuracy. The ultimate tool for high-end spatial storytelling.</p>
+                    </div>
+
+                    <div class="industry-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-box"><ion-icon name="boat-outline"></ion-icon></div>
+                        <h4 data-i18n="ind_5_title">Yachting</h4>
+                        <p data-i18n="ind_5_body">Provide a luxury walkthrough for international buyers. Capture every detail of the deck and interior with stunning, high-definition 3D clarity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Let's Build Your 3D Experience</h2>
-                <p class="section-subtitle">Turn your space into a 3D experience your clients won't forget. Let's make it happen.</p>
+                <h2 data-i18n="contact_h2">Let's Build Your 3D Experience</h2>
+                <p class="section-subtitle" data-i18n="contact_subtitle">Turn your space into a 3D experience your clients won't forget.</p>
                 
                 <div class="contact-info">
                     <p><ion-icon name="mail-outline"></ion-icon> Email: <a href="mailto:art.io3dtour@gmail.com">art.io3dtour@gmail.com</a></p>
                     <p><ion-icon name="call-outline"></ion-icon> Phone: +30 6931000776</p>
                 </div>
 
-                <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="contact-form">
-                    <!-- ΣΗΜΑΝΤΙΚΟ: Αντικαταστήστε το "YOUR_UNIQUE_ID" με το δικό σας ID από το Formspree.io -->
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
+                <form id="contact-form" action="https://formspree.io/f/mjgeonbk" method="POST" class="contact-form" data-aos="fade-right">
+                    <input type="text" name="name" data-i18n-placeholder="form_name" placeholder="Your name" required>
+                    <input type="email" name="email" data-i18n-placeholder="form_email" placeholder="Email Address" required>
+                    <textarea name="message" data-i18n-placeholder="form_message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                    <button id="submit-button" type="submit" class="btn" data-i18n="form_btn">Send Message</button>
+                    
+                    <!-- Εδώ θα εμφανίζεται το αποτέλεσμα της αποστολής -->
+                    <p id="form-status" style="margin-top: 15px; font-weight: 600;"></p>
                 </form>
             </div>
         </section>
+        </main>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 ART.IO - 3D Visuals That Sell</p>
-            <p class="powered-by">Powered by Emergent AI | EGALEIO</p>
+            <p>&copy; 2026 ART.IO - 3D Visuals That Sell</p>
         </div>
     </footer>
 
@@ -109,7 +173,9 @@
     <!-- IonIcons for icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Your custom JavaScript file -->
     <script src="javascript.js"></script>
 </body>
 </html>
+
